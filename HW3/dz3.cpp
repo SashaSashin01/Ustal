@@ -2,7 +2,7 @@
 #include <string>
 #include <limits>
 
-гint64_t string_to_uint64(char* string) {
+uint64_t string_to_uint64(char* string) {
 if (string == nullptr) {
 throw std::invalid_argument("Null pointer");
 }
