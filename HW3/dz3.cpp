@@ -20,7 +20,7 @@ int main() {
             size_t pos;
             unsigned long number = std::stoul(input, &pos, 10);
 
-            if (pos != input.length() || number > std::numeric_limits<uint32_t>::max()) {
+            if (pos != input.length() || number > std::numeric_limits<uint64_t>::max()) {
                 throw std::invalid_argument("Invalid input");
             }
 
@@ -31,7 +31,7 @@ int main() {
                 std::cout << "Please enter a non-zero positive integer.\n";
                 continue;
             }
-            if (sum > std::numeric_limits<uint32_t>::max() - number) {
+            if (sum > std::numeric_limits<uint64_t>::max() - number) {
                 std::cout << "Integer overflow detected! Please enter a smaller number.\n";
                 continue;
             }
