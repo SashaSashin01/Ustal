@@ -2,6 +2,26 @@
 #include <string>
 #include <limits>
 
+гint64_t string_to_uint64(char* string) {
+if (string == nullptr) {
+throw std::invalid_argument("Null pointer");
+}
+
+uint64_t result = 0;
+while (*string) {
+if (*string <'0' || *string > '9') {
+throw std::invalid_argument("Invalid character");
+}
+
+if (result > (std::numeric_limits<uint64_t>::max() - (*string - '0')) / 10) {
+    throw std::out_of_range("Overflow"); }
+
+result = result * 10 + (*string - '0');
+string++;
+}
+
+return result;
+}
 
 int main() {
     uint64_t sum = 0;
@@ -17,12 +37,15 @@ int main() {
         }
 
         try {
-            size_t pos;
+           /* size_t pos;
             unsigned long number = std::stoul(input, &pos, 10);
 
             if (pos != input.length() || number > std::numeric_limits<uint64_t>::max()) {
                 throw std::invalid_argument("Invalid input");
             }
+            */
+
+            uint64_t number = string_to_uint64(&input[0]);
 
             if (number == STOP_NUMBER) {
                 break;
