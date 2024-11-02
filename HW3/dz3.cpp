@@ -4,8 +4,8 @@
 
 
 int main() {
-    uint32_t sum = 0;
-    const uint32_t STOP_NUMBER = 5312;
+    uint64_t sum = 0;
+    const uint64_t STOP_NUMBER = 5312;
 
     std::cout << "Enter positive integers (enter 5312 to stop):\n";
 
@@ -26,6 +26,10 @@ int main() {
 
             if (number == STOP_NUMBER) {
                 break;
+            }
+            if (number == 0) {
+                std::cout << "Please enter a non-zero positive integer.\n";
+                continue;
             }
             if (sum > std::numeric_limits<uint32_t>::max() - number) {
                 std::cout << "Integer overflow detected! Please enter a smaller number.\n";
