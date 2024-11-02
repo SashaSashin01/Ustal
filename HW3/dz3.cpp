@@ -1,6 +1,7 @@
 #include <iostream>
+#include <string>
 #include <limits>
-#include <cstdint>
+
 
 int main() {
     uint32_t sum = 0;
@@ -10,7 +11,10 @@ int main() {
 
     while (true) {
         std::string input;
-        std::cin >> input;
+        if (!(std::cin >> input)) { 
+            std::cout << "\nEnd of input detected.\n";
+            break;
+        }
 
         try {
             size_t pos;
@@ -22,6 +26,10 @@ int main() {
 
             if (number == STOP_NUMBER) {
                 break;
+            }
+            if (sum > std::numeric_limits<uint32_t>::max() - number) {
+                std::cout << "Integer overflow detected! Please enter a smaller number.\n";
+                continue;
             }
 
             sum += number;
